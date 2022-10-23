@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Times_Table_quiz
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("---------------------");
+            Console.WriteLine("Times Table Quiz!");
+            Console.WriteLine("---------------------\n");
+
+            Console.WriteLine("What times table would you like?");
+            int times_table = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("What is the maximum value would you want your times table to go up to?\n");
+            int max_value = Convert.ToInt32(Console.ReadLine());
+
+            int ans = 0;
+
+            int correct = 0;
+            int incorrect = 0;
+            for (int i = 0; i <= max_value; i++)
+            {
+                Console.WriteLine($"What is {i} * {times_table}?");
+                ans = Convert.ToInt32(Console.ReadLine());
+                int times_ans = i * times_table;
+
+                if (ans == times_ans)
+                {
+                    Console.WriteLine("Correct!\n");
+                    correct = correct + 1;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect!");
+                    incorrect = incorrect + 1;
+                    Console.WriteLine($"The answer is {times_ans}\n");
+                }
+            }
+
+            int correct_total = max_value / 2;
+
+            if (correct >= correct_total)
+            {
+                Console.WriteLine($"You got {correct}/{max_value + 1} right! Well done!");
+            }
+            else if (correct <= 0)
+            {
+                Console.WriteLine($"You got {correct}/{max_value + 1} right! Unlucky!");
+            }
+
+            Console.ReadLine();
+        }
+    }
+}
